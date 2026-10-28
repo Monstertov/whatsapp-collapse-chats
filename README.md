@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://web.whatsapp.com/" target="_blank"><img src="https://custom-icon-badges.demolab.com/badge/WhatsApp-25D366?logo=whatsapp&logoColor=white" alt="WhatsApp" /></a>
   <a href="https://www.google.com/chrome/" target="_blank"><img src="https://custom-icon-badges.demolab.com/badge/Chrome-4285F4?logo=googlechrome&logoColor=white" alt="Chrome" /></a>
-  <a href="https://www.firefox.com/" target="_blank"><img src="https://custom-icon-badges.demolab.com/badge/Firefox-FF7139?logo=firefoxbrowser&logoColor=white" alt="Firefox" /></a>
+  <a href="https://www.firefox.com/" target="_blank"><img src="https://custom-icon-badges.demolab.com/badge/Firefox-FF7139?logoColor=white&logo=firefoxbrowser" alt="Firefox" /></a>
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://custom-icon-badges.demolab.com/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript" /></a>
   <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://custom-icon-badges.demolab.com/badge/CSS-1572B6?logo=css3&logoColor=white" alt="CSS" /></a>
 </p>
