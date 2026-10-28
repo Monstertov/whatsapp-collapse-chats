@@ -1,0 +1,67 @@
+/* Monstertov - https://tov.monster/ */
+
+/* whatsapp forces a 748px minimum, which overflows a tiled pane */
+[data-testid="wa-web-main-screen"] > div {
+  min-width: 0 !important;
+}
+
+/* slim nav rail: 64px down to 40px, room on top for the toggle */
+[data-testid="wa-web-main-screen"] > div > header {
+  width: 40px !important;
+  min-width: 40px !important;
+  padding: 44px 4px 6px !important;
+}
+[data-testid="wa-web-main-screen"] > div > header > div {
+  width: 32px !important;
+}
+[data-testid="wa-web-main-screen"] > div > header button {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 0 !important;
+}
+[data-testid="wa-web-main-screen"] > div > header svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+[data-testid="wa-web-main-screen"] > div > header img {
+  width: 26px !important;
+  height: 26px !important;
+}
+
+/* drawers (calls, status, settings, profile) are offset for the old 64px rail */
+[data-testid="drawer-left"] {
+  margin-left: 40px !important;
+}
+[data-testid="drawer-fullscreen"] {
+  left: 40px !important;
+  width: calc(100% - 40px) !important;
+}
+
+/* hide the chat list column and the left drawers; the chat pane is flex-grow and fills the space */
+html[data-wa-sidebar="collapsed"] div:has(> #side),
+html[data-wa-sidebar="collapsed"] [data-testid="drawer-left"] {
+  display: none !important;
+}
+
+#wa-compact-toggle {
+  position: fixed;
+  top: 6px;
+  left: 4px;
+  z-index: 99999;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #aebac1;
+  padding: 0;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+#wa-compact-toggle:hover {
+  background: rgba(0, 113, 188, 0.35);
+  color: #ffffff;
+}
