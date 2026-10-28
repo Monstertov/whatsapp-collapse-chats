@@ -1,6 +1,7 @@
 # WhatsApp Collapse Chats
 
 <p align="center">
+  <a href="https://web.whatsapp.com/" target="_blank"><img src="https://custom-icon-badges.demolab.com/badge/WhatsApp-25D366?logo=whatsapp&logoColor=white" alt="WhatsApp" /></a>
   <a href="https://www.google.com/chrome/" target="_blank"><img src="https://custom-icon-badges.demolab.com/badge/Chrome-4285F4?logo=googlechrome&logoColor=white" alt="Chrome" /></a>
   <a href="https://www.firefox.com/" target="_blank"><img src="https://custom-icon-badges.demolab.com/badge/Firefox-FF7139?logo=firefoxbrowser&logoColor=white" alt="Firefox" /></a>
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://custom-icon-badges.demolab.com/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript" /></a>
@@ -13,28 +14,46 @@ Browser extension that makes WhatsApp Web fit narrow, tiled windows. It remember
 - The nav rail is slimmed from 64px to 40px, with the toggle at the top.
 - WhatsApp's 748px minimum width is removed, so the page fits small windows without overflowing.
 
-## Chrome
+## Layout
 
-The extension in the repository root.
+| Folder | Browsers |
+| --- | --- |
+| `chrome/` | Chrome, Chromium, Brave, Edge and other Chromium-based browsers |
+| `firefox/` | Firefox, Zen and other Firefox-based browsers |
 
-1. Open `chrome://extensions` and turn on Developer mode.
-2. Click **Load unpacked** and select this folder.
+Both folders share the same `content.js` and `style.css`. Only the manifest differs. Keep the two copies in sync when changing them.
 
-## Firefox and Zen
+## Install in Chrome
 
-The same extension with a Firefox manifest lives in `firefox/`.
+1. Open `chrome://extensions` and turn on **Developer mode**.
+2. Click **Load unpacked** and select the `chrome/` folder.
 
-### Build
+The extension stays installed across restarts.
 
-```sh
-cd firefox
-mkdir -p dist
-zip -X dist/whatsapp-compact.xpi manifest.json content.js style.css icon.png
-```
+## Install in Firefox or Zen
 
-### Install
+The add-on is not signed by Mozilla, so there are two options.
 
-The add-on is not signed by Mozilla.
+### Temporary
 
-- **Temporary**: open `about:debugging#/runtime/this-firefox`, click **Load Temporary Add-on** and select `firefox/manifest.json`. It is removed when the browser restarts.
-- **Permanent**: requires a browser that allows unsigned add-ons, such as Zen, Firefox Developer Edition or Nightly. Set `xpinstall.signatures.required` to `false` in `about:config`, then open `dist/whatsapp-compact.xpi` in the browser.
+1. Open `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on** and select `firefox/manifest.json`.
+
+It is removed when the browser restarts.
+
+### Permanent
+
+This requires a browser that allows unsigned add-ons, such as Zen, Firefox Developer Edition or Firefox Nightly. Regular Firefox releases always require signing.
+
+1. Build the package:
+
+   ```sh
+   cd firefox
+   mkdir -p dist
+   zip -X dist/whatsapp-compact.xpi manifest.json content.js style.css icon.png
+   ```
+
+2. Open `about:config` and set `xpinstall.signatures.required` to `false`.
+3. Open `firefox/dist/whatsapp-compact.xpi` in the browser, for example by dragging it into a window, and click **Add**.
+
+Turning off signature checks applies to every add-on, so only install add-ons from sources you trust.
