@@ -7,7 +7,11 @@
   <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://custom-icon-badges.demolab.com/badge/CSS-1572B6?logo=css3&logoColor=white" alt="CSS" /></a>
 </p>
 
-Browser extension that adds a collapse button to WhatsApp Web, so you can hide the chat list and give the open chat the full screen. It remembers your choice.
+Browser extension that makes WhatsApp Web fit narrow, tiled windows. It remembers your choice.
+
+- Collapsible chat list, collapsed by default. Picking Chats, Calls, Status or another section in the nav rail opens it again.
+- The nav rail is slimmed from 64px to 40px, with the toggle at the top.
+- WhatsApp's 748px minimum width is removed, so the page fits small windows without overflowing.
 
 ## Chrome
 
@@ -18,11 +22,7 @@ The extension in the repository root.
 
 ## Firefox and Zen
 
-The `firefox/` folder holds a compact variant built for narrow, tiled windows:
-
-- Collapsible chat list, collapsed by default. Picking Chats, Calls, Status or another section in the nav rail opens it again.
-- The nav rail is slimmed from 64px to 40px, with the toggle at the top.
-- WhatsApp's 748px minimum width is removed, so the page fits small windows without overflowing.
+The same extension with a Firefox manifest lives in `firefox/`.
 
 ### Build
 

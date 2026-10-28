@@ -1,3 +1,4 @@
+// Monstertov - https://tov.monster/
 (() => {
   const KEY = 'collapsed';
   const root = document.documentElement;
@@ -10,9 +11,9 @@
     </svg>`;
 
   const btn = document.createElement('button');
-  btn.id = 'wa-sidebar-toggle-btn';
+  btn.id = 'wa-compact-toggle';
 
-  // State lives on <html> so it survives WhatsApp re-rendering #side.
+  // state lives on <html> so it survives WhatsApp re-rendering the app
   function apply(collapsed) {
     if (collapsed) root.dataset.waSidebar = 'collapsed';
     else delete root.dataset.waSidebar;
@@ -21,13 +22,20 @@
     window.dispatchEvent(new Event('resize'));
   }
 
-  btn.addEventListener('click', () => {
-    const next = root.dataset.waSidebar !== 'collapsed';
-    apply(next);
-    chrome.storage.local.set({ [KEY]: next });
-  });
+  function set(collapsed) {
+    apply(collapsed);
+    chrome.storage.local.set({ [KEY]: collapsed });
+  }
 
-  // Extension storage, not the page's localStorage, which WhatsApp can clear.
+  btn.addEventListener('click', () => set(root.dataset.waSidebar !== 'collapsed'));
+
+  // picking chats, calls, status etc. in the nav rail opens the list again
+  document.addEventListener('click', (e) => {
+    if (root.dataset.waSidebar !== 'collapsed') return;
+    if (e.target.closest('[data-testid="wa-web-main-screen"] > div > header button')) set(false);
+  }, true);
+
+  // extension storage, not the page's localStorage, which WhatsApp can clear
   chrome.storage.local.get({ [KEY]: true }, (res) => apply(res[KEY]));
 
   const ensureBtn = () => { if (!btn.isConnected) document.body.appendChild(btn); };
